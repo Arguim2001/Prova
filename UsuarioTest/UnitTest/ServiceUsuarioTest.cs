@@ -43,8 +43,7 @@ namespace UsuarioTest.UnitTest
             var result = await _serviceUsuario.GetUsuario();
 
             // Assert
-            Assert.Equal(result);
-            
+            Assert.Equal(usuarios, result);
 
         }
 
