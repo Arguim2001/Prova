@@ -18,11 +18,41 @@ namespace UsuarioTest.UnitTest
 
         public ServiceUsuarioTest() => _serviceUsuario = new ServiceUsuario(_usuarioRepository.Object);
 
+
+
+        //>>>>>>>>>>>>>>>>>>>>>>>>>>TEST GET<<<<<<<<<<<<<<<<<<<<<<<<<\\
+
+
         [Theory]
-        [InlineData("Argu", 01, "Brazil", "01/09/2001","061.013.953-32")]
+        [InlineData]
+
+        public async Task Get_Pessoa_By_Name_Return_()
+        {
+            List<Usuario> usuarios = new ();
+            // Arrange
+            Usuario usuario = new();
+            usuarios.Add(usuario);
+            
+            
+
+            
+
+            _usuarioRepository.Setup(x => x.GetUsuario()).ReturnsAsync(usuario);
+
+            // Act
+            var result = await _serviceUsuario.GetUsuario(no);
+
+            // Assert
+            Assert.Equal(usuario, result);
+            
+
+        }
 
 
         //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>TEST POST<<<<<<<<<<<<<<<<<<<<<<<<<<<\\
+
+        [Theory]
+        [InlineData("Argu", 01, "Brazil", "01/09/2001", "061.013.953-32")]
 
         public async Task Post_Usuario_Return_Bool(string nome, int id, string endereco, string nascimento, string cpf)
         {
