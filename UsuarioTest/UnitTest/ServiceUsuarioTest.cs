@@ -28,10 +28,10 @@ namespace UsuarioTest.UnitTest
 
         public async Task Get_Pessoa_By_Name_Return_()
         {
-            List<Usuario> usuarios = new ();
             // Arrange
             Usuario usuario = new();
-            usuarios.Add(usuario);
+           
+            usuario.Nome = "Argus";
             
             
 
@@ -40,10 +40,10 @@ namespace UsuarioTest.UnitTest
             _usuarioRepository.Setup(x => x.GetUsuario()).ReturnsAsync(usuario);
 
             // Act
-            var result = await _serviceUsuario.GetUsuario(no);
+            var result = await _serviceUsuario.GetUsuario();
 
             // Assert
-            Assert.Equal(usuario, result);
+            Assert.Equal(result);
             
 
         }
