@@ -26,24 +26,31 @@ namespace UsuarioTest.UnitTest
         [Theory]
         [InlineData]
 
-        public async Task Get_Pessoa_By_Name_Return_()
+        public async Task Get_Pessoa_By_NameReturn()
         {
             // Arrange
-            Usuario usuario = new();
-           
-            usuario.Nome = "Argus";
-            
-            
+            var usuarios = new List<Usuario>()
+            {
+                new Usuario()
+                {
+                    Nome = "Luan"
+                },
+                new Usuario()
+                {
+                    Nome = "Argu"
+                },
+            };
 
-            
-
-            _usuarioRepository.Setup(x => x.GetUsuario()).ReturnsAsync(usuario);
+            foreach (var item in usuarios)
+            {
+                _serviceUsuario.PostUsuario(item);
+            }
 
             // Act
-            var result = await _serviceUsuario.GetUsuario();
+            var re = await _serviceUsuario.GetUsuario();
 
             // Assert
-            Assert.Equal(usuarios, result);
+            Assert.Equal(usuarios, re);
 
         }
 
